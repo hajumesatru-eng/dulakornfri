@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="ads-config.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konfirmasi Akses Halaman</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+        h1 {
+            font-size: 24px;
+            color: #333333;
+            margin-bottom: 15px;
+        }
+        p {
+            font-size: 14px;
+            color: #666666;
+            line-height: 1.5;
+            margin-bottom: 25px;
+        }
+        .btn-continue {
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .btn-continue:hover {
+            background-color: #004085;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Verifikasi Akses</h1>
+        <p>Silakan klik tombol di bawah ini untuk mengonfirmasi bahwa Anda ingin melanjutkan ke halaman berikutnya.</p>
+        
+        <button class="btn-continue" onclick="navigateToNextPage()">Lanjutkan</button>
+    </div>
+
+    <script>
+        function navigateToNextPage() {
+            // Ganti URL ini dengan halaman tujuan yang valid
+            window.location.href = "halaman_selanjutnya.html";
+        }
+    </script>
+
+</body>
+</html>
