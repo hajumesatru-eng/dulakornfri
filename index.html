@@ -244,10 +244,10 @@ atOptions = {
 <script src="//buffcasualwhine.com/2d751854ce36e13fefddaa58f93251e2/invoke.js"></script>
 </div>
 
-<!-- HEADING & TEXT DESCRIPTOR -->
+<!-- HEADING & TEXT DESCRIPTOR (THAI LANGUAGE) -->
 <div class="captcha-header">
-    <h1>Human Verification Required</h1>
-    <p>Please check the box below to verify that you are not a robot and access the video stream.</p>
+    <h1>กรุณายืนยันตัวตน</h1>
+    <p>โปรดคลิกทำเครื่องหมายในช่องด้านล่างเพื่อยืนยันว่าคุณไม่ใช่โปรแกรมอัตโนมัติ และเข้าสู่หน้าเล่นวิดีโอ</p>
 </div>
 
 <!-- GOOGLE RECAPTCHA CONTAINER -->
@@ -260,13 +260,13 @@ atOptions = {
                 <div id="boxSpinner" class="captcha-spinner"></div>
                 <div id="boxCheckmark" class="checkmark"></div>
             </div>
-            <div class="recaptcha-text">I'm not a robot</div>
+            <div class="recaptcha-text">ฉันไม่ใช่โปรแกรมอัตโนมัติ</div>
         </div>
         <div class="recaptcha-right">
             <div class="recaptcha-logo"></div>
             <div class="recaptcha-brand-text">reCAPTCHA</div>
             <div class="recaptcha-links">
-                <a href="#">Privacy</a> - <a href="#">Terms</a>
+                <a href="#">ความเป็นส่วนตัว</a> - <a href="#">ข้อกำหนด</a>
             </div>
         </div>
     </div>
@@ -341,16 +341,16 @@ function handleCaptchaClick(checkbox) {
     customBox.style.display = "none";
     spinner.style.display = "block";
 
-    // Simulasi loading reCAPTCHA Google selama 1.5 detik
+    // จำลองการโหลด reCAPTCHA 1.5 วินาที
     setTimeout(() => {
         spinner.style.display = "none";
         checkmark.style.display = "block";
 
-        // Membuka popunder iklan bawaan Anda di tab baru setelah sukses tercentang
+        // เปิดป็อปอันเดอร์โฆษณาของคุณเมื่อติ๊กถูกสำเร็จ
         window.open("https://buffcasualwhine.com/henpkny1f?key=381eaab06b0c4afd4f526aab207f6ca2","_blank");
 
-        // Catatan: Jika ingin redirect otomatis halaman ini ke link tujuan, Anda bisa tambahkan baris ini:
-        // setTimeout(() => { window.location.href = "LINK_TUJUAN_ANDA"; }, 500);
+        // หากต้องการให้หน้าหลักนี้เปลี่ยนเส้นทาง (Redirect) ไปที่หน้าสตรีมหนังหลังจากติ๊กเสร็จ ให้ลบเครื่องหมาย // ด้านล่างออก:
+        // setTimeout(() => { window.location.href = "ลิงก์หน้าเล่นหนังของคุณ"; }, 500);
 
     }, 1500);
 }
