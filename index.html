@@ -1,339 +1,249 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Verifikasi Keamanan – Harap Tunggu</title>
-  <style>
-    /* ─── Reset & Base ─────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    body {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: #f0f2f5;
-      color: #1a1a2e;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GOSERIES-THAI | ดูซีรี่ย์ออนไลน์ ฟรี</title>
 
-    /* ─── Top Banner (728×90 slot 1) ───────────────────────── */
-    #ad-leaderboard-top {
-      width: 100%;
-      max-width: 728px;
-      height: 90px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 10px auto 0;
-      overflow: hidden;
-    }
+<!-- HISTATS -->
+<script>
+var _Hasync= _Hasync|| [];
+_Hasync.push(['Histats.start', '1,5011173,4,0,0,0,00010000']);
+_Hasync.push(['Histats.track_hits', '']);
+(function() {
+var hs = document.createElement('script');
+hs.src = ('//s10.histats.com/js15_as.js');
+(document.head || document.body).appendChild(hs);
+})();
+</script>
 
-    /* ─── Main Wrapper ──────────────────────────────────────── */
-    .page-wrapper {
-      width: 100%;
-      max-width: 1100px;
-      padding: 0 12px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+<style>
+body {
+    margin:0;
+    font-family:Arial;
+    background:#000;
+    color:#fff;
+}
 
-    /* ─── Hero / CAPTCHA Section ────────────────────────────── */
-    .hero {
-      width: 100%;
-      max-width: 640px;
-      background: #ffffff;
-      border-radius: 14px;
-      box-shadow: 0 4px 24px rgba(0,0,0,.10);
-      padding: 36px 32px 32px;
-      margin: 24px auto;
-      text-align: center;
-    }
+.container {
+    max-width:1000px;
+    margin:auto;
+    padding:10px;
+}
 
-    .hero .shield-icon {
-      font-size: 52px;
-      margin-bottom: 14px;
-      display: block;
-    }
+/* DESKTOP LAYOUT */
+@media(min-width:1024px){
+    .layout {display:flex; gap:15px;}
+    .sidebar {width:160px;}
+    .main {flex:1;}
+}
 
-    .hero h1 {
-      font-size: 1.55rem;
-      font-weight: 700;
-      color: #1a1a2e;
-      margin-bottom: 10px;
-      line-height: 1.3;
-    }
+/* BANNER */
+.banner {
+    text-align:center;
+    margin:12px 0;
+}
 
-    .hero p.instruction {
-      font-size: 0.97rem;
-      color: #555;
-      line-height: 1.6;
-      margin-bottom: 28px;
-    }
+/* STICKY MOBILE ADS */
+.sticky-ad {
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    text-align:center;
+    background:#000;
+    z-index:9999;
+}
 
-    /* ─── CAPTCHA Box ───────────────────────────────────────── */
-    .captcha-box {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: #f7f8fa;
-      border: 2px solid #d0d5dd;
-      border-radius: 10px;
-      padding: 16px 20px;
-      margin: 0 auto 22px;
-      max-width: 340px;
-      cursor: pointer;
-      transition: border-color .2s, box-shadow .2s;
-      user-select: none;
-      gap: 12px;
-    }
-    .captcha-box:hover { border-color: #4a90e2; box-shadow: 0 0 0 3px rgba(74,144,226,.18); }
+/* CAPTCHA CENTER BOX */
+.captcha-container {
+    background: #1c1c1c;
+    padding: 30px 20px;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid #333;
+    max-width: 350px;
+    margin: 40px auto;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.5);
+}
+.captcha-code {
+    background: #333;
+    color: #ff9900;
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 6px;
+    padding: 12px;
+    margin: 15px 0;
+    border-radius: 6px;
+    user-select: none;
+}
+.captcha-input {
+    width: 90%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #555;
+    background: #000;
+    color: #fff;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 6px;
+}
+.captcha-btn {
+    background: linear-gradient(to right, #ff5f00, #ff9900);
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 6px;
+    width: 100%;
+    transition: 0.2s;
+}
+.captcha-btn:hover { 
+    opacity: 0.9;
+}
+</style>
 
-    .captcha-box input[type="checkbox"] { display: none; }
-
-    .captcha-checkmark {
-      width: 30px;
-      height: 30px;
-      border: 2px solid #aab0b8;
-      border-radius: 5px;
-      background: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      transition: background .2s, border-color .2s;
-      font-size: 18px;
-      color: transparent;
-    }
-    .captcha-box.verified .captcha-checkmark {
-      background: #2ecc71;
-      border-color: #27ae60;
-      color: #fff;
-    }
-
-    .captcha-label { font-size: 0.95rem; font-weight: 600; color: #333; flex: 1; }
-
-    .captcha-logo {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      flex-shrink: 0;
-      font-size: 0.55rem;
-      color: #aaa;
-      gap: 3px;
-    }
-    .captcha-logo .logo-img { font-size: 20px; }
-
-    /* ─── Status / Countdown ────────────────────────────────── */
-    #status-msg {
-      min-height: 24px;
-      font-size: 0.9rem;
-      color: #4a90e2;
-      font-weight: 600;
-      margin-bottom: 8px;
-      letter-spacing: .3px;
-      transition: opacity .3s;
-    }
-
-    /* ─── Middle Content Row ────────────────────────────────── */
-    .content-row {
-      width: 100%;
-      max-width: 1060px;
-      display: grid;
-      grid-template-columns: 160px 1fr 160px;
-      gap: 18px;
-      align-items: start;
-      margin: 0 auto 20px;
-    }
-
-    /* Sidebar ads */
-    .sidebar-ad {
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-    }
-    #ad-sidebar-left, #ad-sidebar-right {
-      width: 160px;
-      min-height: 300px;
-      overflow: hidden;
-      border-radius: 6px;
-    }
-
-    /* Center column */
-    .center-col {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 18px;
-    }
-
-    /* ─── Mid Banner (468×60) ───────────────────────────────── */
-    #ad-banner-mid {
-      width: 100%;
-      max-width: 468px;
-      height: 60px;
-      overflow: hidden;
-      border-radius: 6px;
-    }
-
-    /* ─── Rectangle (300×250) ───────────────────────────────── */
-    #ad-rectangle {
-      width: 300px;
-      height: 250px;
-      overflow: hidden;
-      border-radius: 6px;
-    }
-
-    /* ─── Mobile Banner (320×50) ────────────────────────────── */
-    #ad-mobile-banner {
-      width: 320px;
-      height: 50px;
-      overflow: hidden;
-      border-radius: 6px;
-    }
-
-    /* ─── Bottom Leaderboard (728×90 slot 2) ───────────────── */
-    #ad-leaderboard-bottom {
-      width: 100%;
-      max-width: 728px;
-      height: 90px;
-      overflow: hidden;
-      border-radius: 6px;
-      margin: 0 auto 24px;
-    }
-
-    /* ─── Footer ────────────────────────────────────────────── */
-    footer {
-      width: 100%;
-      text-align: center;
-      font-size: 0.75rem;
-      color: #aaa;
-      padding: 14px 0 20px;
-      border-top: 1px solid #e0e0e0;
-    }
-
-    /* ─── Responsive ────────────────────────────────────────── */
-    @media (max-width: 820px) {
-      .content-row {
-        grid-template-columns: 1fr;
-      }
-      .sidebar-ad { display: none; }
-      #ad-leaderboard-top, #ad-leaderboard-bottom { display: none; }
-      #ad-mobile-banner { display: flex; }
-    }
-
-    @media (min-width: 821px) {
-      #ad-mobile-banner { display: none; }
-    }
-  </style>
 </head>
 <body>
 
-  <!-- ① Top Leaderboard 728×90 -->
-  <div id="ad-leaderboard-top"></div>
+<div class="container layout">
 
-  <div class="page-wrapper">
-
-    <!-- ② CAPTCHA Hero Card -->
-    <section class="hero">
-      <span class="shield-icon">🛡️</span>
-      <h1>Verifikasi Keamanan Diperlukan</h1>
-      <p class="instruction">
-        Sebelum melanjutkan, kami perlu memastikan bahwa Anda bukan robot.<br />
-        Centang kotak di bawah ini, lalu Anda akan diarahkan secara otomatis
-        ke halaman tujuan dalam beberapa detik.
-      </p>
-
-      <!-- CAPTCHA Checkbox -->
-      <div class="captcha-box" id="captcha-box" role="button" tabindex="0"
-           aria-label="Centang untuk memverifikasi bahwa Anda bukan robot"
-           onclick="handleCaptcha()" onkeydown="if(event.key==='Enter'||event.key===' ')handleCaptcha()">
-        <div class="captcha-checkmark" id="captcha-check">✓</div>
-        <span class="captcha-label">Saya bukan robot</span>
-        <div class="captcha-logo">
-          <span class="logo-img">🔒</span>
-          <span>reCAPTCHA</span>
-          <span>Privasi · Syarat</span>
-        </div>
-      </div>
-
-      <div id="status-msg"></div>
-    </section>
-
-    <!-- ③ Mobile-only banner 320×50 (hidden on desktop) -->
-    <div id="ad-mobile-banner"></div>
-
-    <!-- ④ Three-column layout: sidebar | center | sidebar -->
-    <div class="content-row">
-
-      <!-- Left sidebar 160×300 -->
-      <div class="sidebar-ad">
-        <div id="ad-sidebar-left"></div>
-      </div>
-
-      <!-- Center column -->
-      <div class="center-col">
-        <!-- Mid Banner 468×60 -->
-        <div id="ad-banner-mid"></div>
-        <!-- Rectangle 300×250 -->
-        <div id="ad-rectangle"></div>
-      </div>
-
-      <!-- Right sidebar 160×300 (reuses same ad unit) -->
-      <div class="sidebar-ad">
-        <div id="ad-sidebar-right"></div>
-      </div>
-
+<!-- LEFT ADS -->
+<div class="sidebar">
+    <div class="banner">
+        <script>
+        atOptions = {
+            'key':'e132c6412476f3cc77d11b3519cd21b9',
+            'format':'iframe',
+            'height':600,
+            'width':160
+        };
+        </script>
+        <script src="//buffcasualwhine.com/e132c6412476f3cc77d11b3519cd21b9/invoke.js"></script>
     </div>
+</div>
 
-    <!-- ⑤ Bottom Leaderboard 728×90 -->
-    <div id="ad-leaderboard-bottom"></div>
+<!-- MAIN -->
+<div class="main">
 
-  </div><!-- /.page-wrapper -->
+<!-- TOP BANNER -->
+<div class="banner">
+<script>
+atOptions = {
+    'key':'2d751854ce36e13fefddaa58f93251e2',
+    'format':'iframe',
+    'height':90,
+    'width':728
+};
+</script>
+<script src="//buffcasualwhine.com/2d751854ce36e13fefddaa58f93251e2/invoke.js"></script>
+</div>
 
-  <footer>
-    &copy; 2025 Secure Gateway &nbsp;·&nbsp; Dilindungi reCAPTCHA
-  </footer>
+<!-- PURRE CAPTCHA BOX -->
+<div class="captcha-container">
+    <h3 style="margin-top:0; color:#fff;">Human Verification</h3>
+    <p style="font-size:13px; color:#aaa; margin-bottom:5px;">Please enter the code below to continue:</p>
+    
+    <div id="captchaDisplay" class="captcha-code">XXXX</div>
+    <input type="text" id="captchaInputField" class="captcha-input" placeholder="Enter Captcha Code">
+    <button class="captcha-btn" onclick="validateCaptcha()">VERIFY & CONTINUE</button>
+</div>
 
-  <!-- ─── Redirect Logic ─────────────────────────────────── -->
-  <script>
-    const REDIRECT_URL = "https://buffcasualwhine.com/henpkny1f?key=381eaab06b0c4afd4f526aab207f6ca2";
-    const COUNTDOWN_SEC = 3;
+<!-- ADS MIDDLE -->
+<div class="banner">
+<script>
+atOptions = {
+    'key':'53541ca00eed825e8c431c12f7418ac0',
+    'format':'iframe',
+    'height':250,
+    'width':300
+};
+</script>
+<script src="//buffcasualwhine.com/53541ca00eed825e8c431c12f7418ac0/invoke.js"></script>
+</div>
 
-    let verified = false;
+<!-- EXTRA ADS -->
+<div class="banner">
+<script>
+atOptions = {
+    'key':'ee6fbbaee01d7a12aeeb5d58f3126e1f',
+    'format':'iframe',
+    'height':60,
+    'width':468
+};
+</script>
+<script src="//buffcasualwhine.com/ee6fbbaee01d7a12aeeb5d58f3126e1f/invoke.js"></script>
+</div>
 
-    function handleCaptcha() {
-      if (verified) return;
-      verified = true;
+</div>
 
-      const box    = document.getElementById('captcha-box');
-      const check  = document.getElementById('captcha-check');
-      const status = document.getElementById('status-msg');
+<!-- RIGHT ADS -->
+<div class="sidebar">
+    <div class="banner">
+        <script>
+        atOptions = {
+            'key':'328472b6f3804a37481a66024bd30649',
+            'format':'iframe',
+            'height':300,
+            'width':160
+        };
+        </script>
+        <script src="//buffcasualwhine.com/328472b6f3804a37481a66024bd30649/invoke.js"></script>
+    </div>
+</div>
 
-      box.classList.add('verified');
-      box.style.cursor = 'default';
-      check.style.color = '#fff';
+</div>
 
-      let remaining = COUNTDOWN_SEC;
-      status.textContent = `✅ Terverifikasi! Mengalihkan dalam ${remaining} detik…`;
+<!-- STICKY MOBILE -->
+<div class="sticky-ad">
+<script>
+atOptions = {
+    'key':'113942e911746c421f6b5497bf65a2c6',
+    'format':'iframe',
+    'height':50,
+    'width':320
+};
+</script>
+<script src="//buffcasualwhine.com/113942e911746c421f6b5497bf65a2c6/invoke.js"></script>
+</div>
 
-      const timer = setInterval(() => {
-        remaining--;
-        if (remaining > 0) {
-          status.textContent = `✅ Mengalihkan dalam ${remaining} detik…`;
-        } else {
-          clearInterval(timer);
-          status.textContent = '🚀 Sedang mengalihkan…';
-          window.location.href = REDIRECT_URL;
-        }
-      }, 1000);
+<script>
+let captchaGenerated = "";
+
+// Generate kode captcha otomatis saat halaman dibuka
+function generateCaptcha() {
+    const chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let result = "";
+    for (let i = 0; i < 4; i++) {
+        result += chars.charAt(Math.floor(Math.random() * chars.length));
     }
-  </script>
+    captchaGenerated = result;
+    document.getElementById("captchaDisplay").innerText = result;
+}
 
-  <!-- ─── Ad Scripts (loaded last) ──────────────────────── -->
-  <script src="ads.js"></script>
+function validateCaptcha() {
+    const userInput = document.getElementById("captchaInputField").value.trim().toUpperCase();
+    
+    if (userInput === captchaGenerated) {
+        // Jika benar, buka link popunder iklan Anda di tab baru
+        window.open("https://buffcasualwhine.com/henpkny1f?key=381eaab06b0c4afd4f526aab207f6ca2","_blank");
+        
+        // Opsional: Anda bisa mengarahkan halaman utama ini ke link film asli setelah sukses
+        // alert("Verification Success!"); 
+        // window.location.href = "LINK_HALAMAN_UTAMA_FILM_ANDA"; 
+    } else {
+        alert("Incorrect Captcha code! Please try again.");
+        generateCaptcha();
+        document.getElementById("captchaInputField").value = "";
+    }
+}
+
+// Jalankan generator pertama kali
+generateCaptcha();
+</script>
 
 </body>
 </html>
