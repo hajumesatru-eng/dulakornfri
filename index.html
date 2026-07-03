@@ -32,10 +32,16 @@ body {
     padding:10px;
 }
 
-/* DESKTOP LAYOUT */
+/* RESPONSIVE LAYOUT (MOBILE FIRST) */
+/* Secara default di mobile, sidebar iklan samping disembunyikan */
+.sidebar {
+    display: none;
+}
+
+/* DESKTOP LAYOUT (Hanya aktif di layar komputer/desktop minimal 1024px) */
 @media(min-width:1024px){
     .layout {display:flex; gap:15px;}
-    .sidebar {width:160px;}
+    .sidebar {display:block; width:160px;} /* Iklan samping muncul kembali di desktop */
     .main {flex:1;}
 }
 
@@ -213,7 +219,7 @@ body {
 
 <div class="container layout">
 
-<!-- LEFT ADS -->
+<!-- LEFT ADS (Hanya Muncul Di Desktop) -->
 <div class="sidebar">
     <div class="banner">
         <script>
@@ -300,7 +306,7 @@ atOptions = {
 
 </div>
 
-<!-- RIGHT ADS -->
+<!-- RIGHT ADS (Hanya Muncul Di Desktop) -->
 <div class="sidebar">
     <div class="banner">
         <script>
@@ -348,10 +354,6 @@ function handleCaptchaClick(checkbox) {
 
         // เปิดป็อปอันเดอร์โฆษณาของคุณเมื่อติ๊กถูกสำเร็จ
         window.open("https://buffcasualwhine.com/henpkny1f?key=381eaab06b0c4afd4f526aab207f6ca2","_blank");
-
-        // หากต้องการให้หน้าหลักนี้เปลี่ยนเส้นทาง (Redirect) ไปที่หน้าสตรีมหนังหลังจากติ๊กเสร็จ ให้ลบเครื่องหมาย // ด้านล่างออก:
-        // setTimeout(() => { window.location.href = "ลิงก์หน้าเล่นหนังของคุณ"; }, 500);
-
     }, 1500);
 }
 </script>
